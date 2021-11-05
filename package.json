@@ -1,0 +1,27 @@
+{
+    "name": "@wmlabs/ssl-cert-info",
+    "version": "1.0.0",
+    "description": "A simple library to get TLS peer certificate information.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WooMai/ssl-cert-info.git"
+    },
+    "keywords": [
+        "TLS",
+        "SSL",
+        "Certificate"
+    ],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/WooMai/ssl-cert-info/issues"
+    },
+    "homepage": "https://github.com/WooMai/ssl-cert-info#readme",
+    "dependencies": {
+        "pem": "^1.14.4"
+    }
+}
