@@ -1,5 +1,5 @@
 {
-    "name": "@wmlabs/ssl-cert-info",
+    "name": "ssl-cert-info",
     "version": "1.0.0",
     "description": "A simple library to get TLS peer certificate information.",
     "main": "index.js",
