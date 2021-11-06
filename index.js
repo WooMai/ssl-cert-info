@@ -4,12 +4,13 @@ const promisify = require('util').promisify
 const createCertificate = promisify(pem.createCertificate);
 
 /**
- * @param ip
- * @param port
- * @param host
+ * @param {string} ip
+ * @param {int} port
+ * @param {string|null} host
+ * @param {int} timeout
  * @returns {Promise<{fingerprint_sha1: string, subject: *, valid_to: *, bits, subject_alt_name: *[], valid_from: *, serial_number: string, ip_address, authority_info_access: NodeJS.Dict<string[]> | string, ext_key_usage: *, issuer: *, fingerprint_sha256: string}>}
  */
-module.exports = async function (ip, port, host = undefined) {
+module.exports = async function (ip, port, host = null, timeout = 10000) {
     const keys = await createCertificate({days: 1, selfSigned: true});
 
     const options = {
@@ -17,7 +18,7 @@ module.exports = async function (ip, port, host = undefined) {
         cert: keys.certificate,
         host: ip,
         port: port,
-        servername: host,
+        servername: host || undefined,
         rejectUnauthorized: false,
         requestCert: true,
     };
@@ -25,7 +26,7 @@ module.exports = async function (ip, port, host = undefined) {
     const promise = new Promise((resolve, reject) => {
         const timer_id = setTimeout(() => {
             reject(new Error('Timeout reached'))
-        }, 10000)
+        }, timeout)
 
         const socket = tls.connect(options, () => {
             socket.end();

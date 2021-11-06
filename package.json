@@ -1,6 +1,6 @@
 {
     "name": "ssl-cert-info",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A simple library to get TLS peer certificate information.",
     "main": "index.js",
     "scripts": {
